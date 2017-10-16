@@ -12,6 +12,7 @@ img{
     display: inline-block;
     margin: 0px .5%;
     margin-bottom: 10px;
+    overflow: hidden;
     box-shadow: 0px 0px 20px 0px rgba(3,3,3,0.5)
 }
 .container > p {
@@ -58,10 +59,10 @@ header > div:first-child{
     padding-left: 10px;
 }
 small {
+    margin-top: 1em;
     font-family: 'Bungee Hairline', cursive;
     font-size: 1.5em;
     font-weight: bold;
-    position: relative;
     bottom: 20px;
 }
 .fa {
@@ -125,12 +126,11 @@ small {
 .iframeWrapper{
     height: 100%;
     padding: 0 20px;
-    overflow: scroll;
+    /*overflow: scroll;*/
 }
 iframe {
     width: 100%;
-    height: 15%;
-    /*height: 250px;*/
+    height: 350px;
     margin-bottom: 2%;
     box-shadow: 0px 0px 10px 2px rgba(3,3,3,0.5);
 }
@@ -196,6 +196,7 @@ iframe {
     padding: 1%;
 }
 .movie_modal > div:first-child {
+    font-size: .7em;
     color:white;
 }
 .hidden_div{
@@ -217,8 +218,9 @@ iframe {
 }
 
 .modal_description {
-    font-size: .8em;
-    margin-top: 5%;
+    font-size: .6em;
+    margin: 5%;
+    overflow: hidden;
 }
 .fail {
     font-size: 25px;
