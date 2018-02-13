@@ -3,6 +3,18 @@
  */
 
 
+
+/*
+1) image or background image? 
+properties: *image shouldn't scroll down        -background image
+            *image should become opaque when moused over    -image
+            *image should fit the div perfectly
+
+2) review page should be mobile responsive
+            
+*/
+
+
 function MovieList() {
 
     //  Variables
@@ -95,19 +107,21 @@ function MovieList() {
     /* -------------------------------Display Movies Function -------------------------------------------- */
     /* --------------------------------------------------------------------------------------------------- */
     function displayMovies(){
-
         // Loop through movies array and add each to the DOM
         for(var i=0; i < movies.length; i++){
             // Create image
-            var image = $("<img>").addClass("fade").attr("src", "https://image.tmdb.org/t/p/original" + movies[i].poster_path);
+            var image = $("<img>").addClass("movie_cover").attr("src", "https://image.tmdb.org/t/p/original" + movies[i].poster_path);
 
             // Create modal
             var modal = $("<div>").addClass("movie_modal hidden_div");
             $("<div>").html(movies[i].title).appendTo(modal);
             var modal_description = $("<div>").addClass("modal_description").html(movies[i].overview).appendTo(modal);
             // Create container for image
-            var img_container = $("<div>").addClass("contain-poster").css("position","relative").append(modal, image).appendTo(".container");
+            var img_container = $("<div>").addClass("contain-poster col-xs-12 col-md-3").css("position","relative").append(modal, image).appendTo(".contain_movies");
+            // var img_container = $("<div>").css("background-image", "url('https://image.tmdb.org/t/p/original" + movies[i].poster_path + "')").addClass("contain-poster col-sm-12 col-md-2").css("position","relative").append(modal).appendTo(".contain_movies");
+
             img_container.attr("index",i);
+
 
             // Add click listener to container that loads the review page
             img_container.click(function(){
@@ -116,17 +130,26 @@ function MovieList() {
             });
 
             // Hover functionality
-            image.mouseenter(function(){
+            img_container.mouseenter(function(){
                 // console.log(this);
                 // $(this).addClass("overlay");
-                $(this).parent(".contain-poster").children(".movie_modal").removeClass("hidden_div");
+                // $(this).parent(".contain-poster").children(".movie_modal").removeClass("hidden_div");
+                $(this).children(".movie_modal").removeClass("hidden_div");
+                $(this).children(".movie_cover").css("opacity", 0.2);
+
             });
-            image.mouseleave(function(){
+            img_container.mouseleave(function(){
                 // console.log(this);
                 // $(this).removeClass("overlay");
-                $(this).parent(".contain-poster").children(".movie_modal").addClass("hidden_div");
+                // $(this).parent(".contain-poster").children(".movie_modal").addClass("hidden_div");
+                $(this).children(".movie_modal").addClass("hidden_div");
+                $(this).children(".movie_cover").css("opacity", 1);
+
+
             });
         }
+        var poster_width =  $(".contain_movies > div").width();
+        $(".contain_movies > div").height(1.5*poster_width);
     };
 
     /* -------------------------------Movie Info Function ------------------------------------------------ */
@@ -272,8 +295,9 @@ function MovieList() {
         // This will run if the reddit function fails at some point
         function failSafe(error) {
             console.log("failsafe: ", error);
-            var fail = $("<div>").addClass("fail").text("Reddit doesn't have much to say about this movie");
-            $("#reddit-container").append(fail);
+            $("#reddit-container").hide();
+            // var fail = $("<div>").addClass("fail").text("Reddit doesn't have much to say about this movie");
+            // $("#reddit-container").append(fail);
         }
     }
 
@@ -293,6 +317,11 @@ function MovieList() {
                 });
                 $('.iframeWrapper').append(ytIframe);
             }
+            //testing
+            var iframe_width = $('iframe').width();
+            $('iframe').css('height', iframe_width/1.6);
+            // $('iframe').css('height', 600);
+
         }
         // Searches youtube for movie title + movie review
         function searchYouTube(movieObj){

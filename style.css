@@ -2,19 +2,28 @@ body{
     margin: 0;
     background-color: #bdbdbd;
 }
-img{
+.movie_cover{
+    position: sticky;
+    top: 0;
     width: 100%;
     height: 100%;
+    z-index: 1;
+    
 }
-.container > div{
-    width: 19%;
-    height: 30%;
+
+.contain_movies > div{
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* width: 214px; */
+    height: 297px;
     display: inline-block;
-    margin: 0px .5%;
+    /* margin: 0px .5%; */
     margin-bottom: 10px;
-    box-shadow: 0px 0px 20px 0px rgba(3,3,3,0.5)
+    box-shadow: 0px 0px 20px 0px rgba(3,3,3,0.5);
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
-.container > p {
+.contain_movies > p {
     padding-top: 5px;
     padding-left: 10px;
     font-family: 'Bungee',cursive;
@@ -29,22 +38,21 @@ header{
     box-shadow: 0 10px 5px rgba(3,3,3,0.5);
     position:relative;
     z-index:2;
+    height: 100%;
 }
-.home-click > p{
-    font-size: 2em;
-    margin: 0;
+.genre-container{
+    color:red;
     position: relative;
-    top: 10px;
-}
-header > div:first-child{
-    position: absolute;
     display: inline-block;
-    bottom: 10%;
-    left: 3%;
+    right: 33vw;
+    /* bottom: 10%;
+    left: 3%; */
 }
 
 .home-click {
     cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 25px;
 }
 
 #movie-list-title{
@@ -52,6 +60,8 @@ header > div:first-child{
     font-family: 'Bungee', cursive;
     color: white;
     font-size: 1.7em;
+    background-color: black;
+    padding-top: 10px;
 }
 #genre-menu{
     font-family: 'Bungee',cursive;
@@ -129,8 +139,6 @@ small {
 }
 iframe {
     width: 100%;
-    height: 15%;
-    /*height: 250px;*/
     margin-bottom: 2%;
     box-shadow: 0px 0px 10px 2px rgba(3,3,3,0.5);
 }
@@ -167,22 +175,26 @@ iframe {
     font-weight: bolder;
 }
 .searchWrapper {
-    position: absolute;
+    color: black;
+    position: relative;
     display: inline-block;
-    right: 3%;
-    bottom: 10%;
+    left: 33vw;
+    /* right: 3%;
+    bottom: 10%; */
 }
 .searchWrapper > button {
-    position: relative;
-    right: 16%;
+    position: absolute;
+    right: 6%;
     border-style: none;
     background-color: transparent;
 }
 .searchWrapper > input {
+    display: inline-block;
     border-radius: 20px;
     border-style: none;
     font-family: 'Bungee', cursive;
     padding-left: 10px;
+    width: 90%;
 }
 
 
@@ -194,6 +206,7 @@ iframe {
     color: black;
     font-family: 'Bungee',cursive;
     padding: 1%;
+    z-index: 2;
 }
 .movie_modal > div:first-child {
     color:white;
@@ -212,13 +225,15 @@ iframe {
 /*}*/
 
 
-.fade:hover{
+
+/* .movie_cover:hover{
     opacity: 0.1;
-}
+} */
 
 .modal_description {
     font-size: .8em;
     margin-top: 5%;
+    width: 90%;
 }
 .fail {
     font-size: 25px;
@@ -227,11 +242,54 @@ iframe {
     padding-top: 100px;
 }
 
-@media only screen and (max-width: 1367px) {
-    iframe {
-        height: 10%;
+@media only screen and (min-width: 760px) and (max-width: 1400px){
+    .genre-container{
+        right: 20vw;
+    }
+    .searchWrapper{
+        left: 20vw;
+    }
+    .contain-img{
+        width: 15%;
+    }
+}
+
+
+@media only screen and (max-width: 760px) {
+    .home-click{
+        width: 225px;
     }
     .comment {
         font-size: 1rem;
     }
+    .genre-container{
+        position: relative;
+        right: 0;
+        padding-bottom: 10px;
+    }
+    .searchWrapper{
+        width: 90%;
+        left: 0;
+        padding-bottom: 10px;
+    }
+
+    #reddit-container{
+        display: inline-block;
+        width: 100%;
+    }
+    #youtube-container{
+        display:inline-block;
+        width: 100%;
+    }
+    .contain-img{
+        width: 85%;
+        height: 30vh;
+        display: block;
+        left: 7%;
+    }
+    #movie-info{
+        height: 100%;
+        display:block;
+    }
 }
+

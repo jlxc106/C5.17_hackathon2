@@ -12,7 +12,7 @@ function displayMovies(popular_movies){
         var image = $("<img>").attr("src", "https://image.tmdb.org/t/p/original" + popular_movies[i].poster_path);
         var img_link = $("<a>", {href: "review.html"}).append(image);
         // var img_container = $("<div>").append(image).appendTo(".container");
-        var img_container = $("<div>").addClass("col-xs-12 col-md-2").append(img_link).appendTo(".container");
+        var img_container = $("<div>").addClass("col-xs-12 col-md-2").append(img_link).appendTo(".contain_movies");
 
         img_container.attr("index",i);
         img_container.click(function(){

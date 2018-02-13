@@ -1,0 +1,9 @@
+{
+    "version": "0.1.0",
+    "linux": {
+        "command": "google-chrome"
+    },
+    "isShellCommand": true,
+    "showOutput": "never",
+    "args": ["${file}"]
+}
