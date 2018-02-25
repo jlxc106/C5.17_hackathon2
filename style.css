@@ -94,14 +94,14 @@ small {
 }
 
 #review-container {
-    width: 100%;
+    width: 100vw;
     /*height: 80vh;*/
     font-size: 0px;
     position: relative;
 }
 
 .box {
-    width: 50%;
+    width: 50vw;
     /*height: 100%;*/
     border-left: solid black 1px;
     box-sizing: border-box;
@@ -113,7 +113,8 @@ small {
 }
 
 #reddit-container > div > p {
-    font-size: 1.1rem;
+    padding-top: 10px;
+    font-size: 1.75rem;
     text-align: center;
     font-family: 'Bungee',cursive;
     box-shadow: 0px 10px 15px 0px rgba(3,3,3,0.5);
@@ -125,8 +126,9 @@ small {
     display:table-cell
 }
 #youtube-container > div > p {
+    padding-top: 10px;
+    font-size: 1.75rem;
     font-family: 'Bungee', cursive;
-    font-size: 1.1rem;
     text-align: center;
     color: white;
     box-shadow: 0 10px 15px rgba(3,3,3,0.5);
@@ -153,6 +155,7 @@ iframe {
 }
 
 .contain-info {
+    font-size: 1.25em;
     display: inline-block;
     position: relative;
     width: 80%;
@@ -173,6 +176,10 @@ iframe {
     margin-right: 20px;
     box-shadow: 0px 0px 15px 0px rgba(3,3,3,0.5);
     font-weight: bolder;
+    max-width: 50vw;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    /* overflow: auto; */
 }
 .searchWrapper {
     color: black;
@@ -210,6 +217,8 @@ iframe {
 }
 .movie_modal > div:first-child {
     color:white;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 .hidden_div{
     display: none;
@@ -253,19 +262,35 @@ iframe {
         width: 15%;
     }
 }
+@media only screen and (min-width: 760px) and (max-width: 992px){
+    #movie-list-title{
+        font-size: 4rem;
+    }
+    .movie_modal{
+        font-size: 4rem;
+    }
+}
 
-
+/* phones */
 @media only screen and (max-width: 760px) {
+    .movie_modal{
+        font-size: 2.5rem;
+    }
     .home-click{
-        width: 225px;
+        width: 350px;
     }
     .comment {
-        font-size: 1rem;
+        font-size: 1.5rem;
+        max-width: 100vw;
     }
     .genre-container{
         position: relative;
         right: 0;
         padding-bottom: 10px;
+        width: 80%;
+    }
+    #genre-menu{
+        width: 100%;
     }
     .searchWrapper{
         width: 90%;
@@ -290,6 +315,11 @@ iframe {
     #movie-info{
         height: 100%;
         display:block;
+    }
+    #youtube-container > div > p{
+        font-size: 1.75rem;
+        padding-top: 10px;
+
     }
 }
 

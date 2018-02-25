@@ -46,6 +46,7 @@ function MovieList() {
             case "popular":
                 url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=' + movie_api_key + '&language=en-US&page=1';
                 $("#movie-list-title").text("In Theaters Now");
+                $("#genre-menu").val("default");
                 break;
             case "search":
                 url = "https://api.themoviedb.org/3/search/movie?api_key=" + movie_api_key + "&language=en-US&query=" + inputData + "&page=1&include_adult=false";
@@ -173,7 +174,7 @@ function MovieList() {
         // Set the html content
         $(".movie-title").html(movies[movieIndex].title);
         $(".description-div > span").html(movies[movieIndex].overview);
-        $(".contain-img").css("background-image","url(https://image.tmdb.org/t/p/original" + movies[movieIndex].poster_path+ ")");
+        $(".contain-img").css("background-image","url(https://image.tmdb.org/t/p/original" + movies[movieIndex].poster_path+ ")").css("background-position","center");
         $(".rating-div > span").html(movies[movieIndex].vote_average + "/10");
     };
 
@@ -274,6 +275,10 @@ function MovieList() {
                         continue;
                     }
                     count++;
+                    // console.log("weeeee");
+                    // var test_1 = $("<p>").text(comments[i]);
+                    // var commentDiv = $("<div>").addClass("comment").append(test_1);
+
                     var commentDiv = $("<div>").addClass("comment").text(comments[i]);
                     $("#reddit-container").append(commentDiv);
                 }
@@ -285,6 +290,11 @@ function MovieList() {
                         continue;
                     }
                     count++;
+
+                    // console.log("woooo");
+                    // var test_2 = $("<p>").text(comments[i]);
+                    // var commentDiv = $("<div>").addClass("comment").append(test_2);
+
                     var commentDiv = $("<div>").addClass("comment").text(comments[i]);
                     $("#reddit-container").append(commentDiv);
                 }
@@ -296,6 +306,7 @@ function MovieList() {
         function failSafe(error) {
             console.log("failsafe: ", error);
             $("#reddit-container").hide();
+            $("#youtube-container").css("width","100%");
             // var fail = $("<div>").addClass("fail").text("Reddit doesn't have much to say about this movie");
             // $("#reddit-container").append(fail);
         }
