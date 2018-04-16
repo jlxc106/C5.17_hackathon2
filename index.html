@@ -1,81 +1,72 @@
 <!DOCTYPE html>
-<html> 
+<html>
+
 <head>
     <meta charset="UTF-8">
     <title>Film Funnel</title>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-    <link rel = "stylesheet" type = "text/css" href = "style.css">
-    <!-- <script src = "movie.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Bungee|Bungee+Hairline" rel="stylesheet">
     <!-- <script src="https://code.jquery.com/jquery-3.1.0.js"></script> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src = "movie.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="movie.js"></script>
     <script src="https://use.fontawesome.com/152bc9385f.js"></script>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             var movieObj = new MovieList();
             movieObj.init();
+            var newSearch = function () {
+                var query = $(".searchWrapper input").val();
+                if (query != "") {
+                    movieObj.getNewMovieList("search", query);
+                }
+            };
 
-        //     $(" .searchWrapper button").click(
-        //         function(){
-        //         var query = $(".searchWrapper input").val();
-        //         if(query != ""){
-        //             movieObj.getNewMovieList("search", query);
-        //         }
-        //     }
-        // );
-        var newSearch = function(){
-            var query = $(".searchWrapper input").val();
-            if(query != ""){
-                movieObj.getNewMovieList("search", query);
-            }
-        };
-
-        $(".searchWrapper button").click(newSearch);
-
-        $(".searchWrapper input").keydown(function(event){
-            if(event.keyCode === 13){
-                newSearch();
-            }
-        });
-
+            $(".searchWrapper button").click(newSearch);
+            $(".searchWrapper input").keydown(function (event) {
+                if (event.keyCode === 13) {
+                    newSearch();
+                }
+            });
 
             // Add change handler to dropdown
-            $("#genre-menu").change(function(){
+            $("#genre-menu").change(function () {
                 var genre = $("#genre-menu").val();
                 movieObj.getNewMovieList("genre", genre);
             });
 
             // Add click listener to title
-            $(".home-click").click( function() {
+            $(".home-click").click(function () {
                 movieObj.getNewMovieList("popular");
             });
-
         });
-
-
-
     </script>
 
 </head>
+
 <body>
     <header>
-        <img src="film_funnel.png" class="home-click"> 
+        <img src="film_funnel.png" class="home-click">
         <div class="menu">
             <div class="genre-container">
-                <select id = "genre-menu">
+                <select id="genre-menu">
                     <option value="default" disabled selected>Genre</option>
                 </select>
             </div>
             <div class="searchWrapper">
                 <input placeholder="search">
-                <button><i class="fa fa-search fa-lg" aria-hidden="true"></i></button>
+                <button>
+                    <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+                </button>
             </div>
         </div>
     </header>
     <p id="movie-list-title"></p>
-    <div id = "main-content"></div>
+    <div id="main-content"></div>
 </body>
+
 </html>
