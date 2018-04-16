@@ -44,7 +44,6 @@
 
             // Add change handler to dropdown
             $("#genre-menu").change(function(){
-                console.log("HEre");
                 var genre = $("#genre-menu").val();
                 movieObj.getNewMovieList("genre", genre);
             });

@@ -223,6 +223,7 @@ function MovieList() {
                     var postTitle = data.data.children[i].data.title.toLowerCase();
                     if(postTitle.includes(title.toLowerCase())) {
                         url = data.data.children[i].data.url;
+                        console.log("haha: ", url);
                         break;
                     }
                 }
@@ -298,7 +299,9 @@ function MovieList() {
                     var commentDiv = $("<div>").addClass("comment").text(comments[i]);
                     $("#reddit-container").append(commentDiv);
                 }
-
+            }
+            if( count === 0){
+                failSafe("No movie discussion found.");
             }
         }
 

@@ -68,10 +68,10 @@ header{
     padding-left: 10px;
 }
 small {
+    margin-top: 1em;
     font-family: 'Bungee Hairline', cursive;
     font-size: 1.5em;
     font-weight: bold;
-    position: relative;
     bottom: 20px;
 }
 .fa {
@@ -137,7 +137,7 @@ small {
 .iframeWrapper{
     height: 100%;
     padding: 0 20px;
-    overflow: scroll;
+    /*overflow: scroll;*/
 }
 iframe {
     width: 100%;
@@ -216,6 +216,7 @@ iframe {
     z-index: 2;
 }
 .movie_modal > div:first-child {
+    font-size: .7em;
     color:white;
     overflow-wrap: break-word;
     word-wrap: break-word;
